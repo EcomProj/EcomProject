@@ -1,0 +1,49 @@
+ $(document).ready(function(){
+       console.log("hi i am here");
+       performAJAX("/getcustomer", "GET", "", getCustomerDetailsCallBack);
+
+    });
+    
+    
+    function getCustomerDetailsCallBack(data){
+    	console.log("DATA0"+data);
+    	var installationslist = "";
+    	var jsondata = JSON.parse(data);
+    	$("#custbody").empty();
+
+    		
+    		$.each(jsondata, function (index, value) {
+
+    			instalationlist += '<tr><td>' + value.cno + ' </td><td>' + value.cname + ' </td><td>' + value.caddr + ' </td></tr>';
+
+    		})
+
+    		$("#custbody").append(instalationlist);
+//    	custbody
+    }
+    
+  /*  
+    function getinstallationsCallBack(data) {
+
+    	var installationslist = "";
+    	var jsondata = JSON.parse(data);
+    	$("#intallation").empty();
+    	var instalationlist = jsondata.installationList;
+
+
+    	if (instalationlist.length === 0) {
+
+    		$('#intallation').html("<b>No Installations<b");
+    		$("b").css("color", "red");
+
+    	} else {
+    		$.each(instalationlist, function (index, value) {
+
+    			instalationlist += '<tr><td style="color: black;"><input type="checkbox" class="rowcheck">' + value.installationName + ' </td></tr>';
+
+    		})
+
+    		$("#intallation").append(instalationlist);
+    	}
+
+    }*/

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Second Page</h1>
+<li><a href="/welcome">home Page</a></li>
+<center><img src="/images/jayadeba.jpg" height="500" width="500"></center>
+
+
+
+
+
+<!-- jQuery  -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+
+	<script src="assets/js/jquery.slimscroll.js"></script>
+	<script src="assets/js/bootstrap-datepicker.min.js"></script>
+	<script src="assets/js/datatables.min.js"></script>
+
+	<script src="assets/js/metisMenu.min.js"></script>
+	<script src="assets/js/script-console.js"></script>
+
+
+	<!-- App js -->
+	<script src="assets/js/jquery.core.js"></script>
+	<script src="assets/js/jquery.app.js"></script>
+	<script src="assets/js/modules.js"></script> 
+</body>
+</html>

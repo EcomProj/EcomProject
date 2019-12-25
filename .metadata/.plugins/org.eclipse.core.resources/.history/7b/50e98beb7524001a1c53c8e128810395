@@ -1,0 +1,16 @@
+ $(document).ready(function(){
+       console.log("hi i am here");
+       performAJAX("/getcustomer", "GET", "", getCustomerDetailsCallBack);
+
+    });
+    
+    
+    function getCustomerDetailsCallBack(data){
+    	console.log("DATA0"+data);
+    	$.each(custarray, function(key,value){
+    		
+    		
+    		
+    	});
+//    	custbody
+    }

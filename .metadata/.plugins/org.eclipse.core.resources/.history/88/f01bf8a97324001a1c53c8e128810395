@@ -1,0 +1,81 @@
+   
+		<div class="container">
+			<div class="pull-left navbar-brand"><img src="assets/images/logo.png" alt="" /></div>
+			<h1 class="brand-title">Escalation Console</h1>
+
+
+			<div class="navbar-right">
+					<div class="navbar-leftblock">
+							<div  class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+								<ul class="nav navbar-nav">				
+									<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-sitemap" aria-hidden="true"></i> Manage</a>
+									<ul class="dropdown-menu animation slideDownIn">
+										<li><a href="modules-information.html">Module & Page Management</a></li>	
+										<li><a href="user-information.html">User Management</a></li>
+										<li><a href="role-information.html">Role Management</a></li>
+										<li><a href="roster-management.html">Roster Management</a></li>										
+									</ul>
+									</li>
+				
+									<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cog" aria-hidden="true"></i>Configuration</a>
+									<ul class="dropdown-menu animation slideDownIn">
+										<li><a href="javascript: void(0);">Analytics Management</a></li>
+										<li><a href="javascript: void(0);">Configure Site (xls upload)</a></li>
+										<li><a href="javascript: void(0);">Validate Configuration</a></li>
+										<li><a href="javascript: void(0);">Validate Device Configuration</a></li>
+										<li><a href="javascript: void(0);">Monitoring hours (PSA)</a></li>
+										<li><a href="javascript: void(0);">Boundary & Masking</a></li>
+										<li><a href="javascript: void(0);">Verify Day & Night View</a></li>
+										<li><a href="javascript: void(0);">Verify Camera Posting</a></li>
+										<li><a href="javascript: void(0);">Validate event flow</a></li>								
+									</ul>
+									</li>
+									
+									<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cog" aria-hidden="true"></i>Information</a>
+									<ul class="dropdown-menu animation slideDownIn">									
+										<li><a href="customer-information.html">Customer Information</a></li>																
+									</ul>
+									</li>									
+								</ul>
+								</div>
+							</div>
+				<div class="header-right">
+			  <ul class="nav navbar-toolbar user-nav navbar-toolbar-right">
+				  <li class="nav-item dropdown">
+					<a href="#" class="nav-link badge-nav dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><div data-icon="g" class="icon icon-notification"></div><span class="badge badge-pill badge-org up">15</span>
+					 </a>
+					 <!-- <ul class="dropdown-menu header-dropdown-menu-right user-list animation slideDownIn">
+						  <li class="user-li-bg"><h3>Notification</h3></li> 
+						<li><a class="dropdown-item" href="javascript:void(0)"><i class="fa fa-user" aria-hidden="true"></i>My Profile</a></li> 
+						<li><a class="dropdown-item" href="login.html"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
+					  </ul> -->  
+					</li> 
+
+				<li class="nav-item dropdown user-box userbox-border">
+				   <a href="#" class="nav-link navbar-avatar dropdown-toggle user-link" data-toggle="dropdown" aria-expanded="true">
+				   <span class="avatar avatar-online user-icondot"><div class="icon icon-profile-user"></div><i></i> </span> </a>
+				  <ul class="dropdown-menu header-dropdown-menu-right user-list animation slideDownIn">
+					  <li class="user-li-bg"><div class="avatar avatar-online user-icondot pull-left"><div class="icon icon-profile-user"></div></div>
+						  <h4>Albert Einstein  <span>albert@vgs.com</span></h4>
+					  </li> 
+					<li><a class="dropdown-item" href="javascript:void(0)"><img src="assets/images/user-dropdown-icon-1.png" alt=""> My Profile</a></li> 
+					<li><a class="dropdown-item" href="javascript:void(0)"><img src="assets/images/user-dropdown-icon-2.png" alt=""> Pause Events</a></li>
+					<li><a class="dropdown-item" href="javascript:void(0)"><img src="assets/images/user-dropdown-icon-3.png" alt=""> My Productivity</a></li>
+					<li><a class="dropdown-item" href="javascript:void(0)"><img src="assets/images/user-dropdown-icon-4.png" alt=""> Escalation</a></li>
+					<li><a class="dropdown-item" href="javascript:void(0)"><img src="assets/images/user-dropdown-icon-5.png" alt=""> Submit Suggestion</a></li>
+					<li><a class="dropdown-item" href="javascript:void(0)"><img src="assets/images/user-dropdown-icon-6.png" alt=""> Event Status </a></li>
+					<li><a class="dropdown-item" href="javascript:void(0)"><img src="assets/images/user-dropdown-icon-7.png" alt=""> Workspace Access</a></li>
+					<li><a class="dropdown-item" href="javascript:void(0)"><img src="assets/images/user-dropdown-icon-8.png" alt=""> Server Connection Status</a></li>
+					<li><a class="dropdown-item" href="javascript:void(0)"><img src="assets/images/user-dropdown-icon-9.png" alt=""> Change password </a></li>
+					<li><a class="dropdown-item" href="login.html"><img src="assets/images/user-dropdown-icon-10.png" alt=""> Log out</a></li>
+				  </ul>
+				</li>
+
+				</ul>
+				</div>
+			</div>
+		</div><!-- end container -->
+	

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>Login</title>
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width"/>
+    <base href="/"/>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/webjars/font-awesome/css/font-awesome.min.css"></link>
+	
+<!-- http://localhost:8080/resources/ecome_js/ecom_util.js -->
+<script>
+    $(document).ready(function(){
+       console.log("hi i am here");
+       performAJAX("/getcustomer", "GET", "", getCustomerDetailsCallBack);
+
+    });
+    
+    
+    function getCustomerDetailsCallBack(data){
+    	console.log("DATA0"+data);
+    }
+</script>
+</head>
+<body>
+<h1>Second Page</h1>
+<li><a href="/welcome">home Page</a></li>
+
+<center><img src="/images/jayadeba.jpg" height="500" width="500"></center>
+
+
+<script src="resources/ecome_js/ecom_util.js"></script>
+
+</body>
+</html>

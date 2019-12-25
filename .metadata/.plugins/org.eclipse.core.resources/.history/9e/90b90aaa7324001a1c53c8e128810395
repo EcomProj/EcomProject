@@ -1,0 +1,227 @@
+$(document).ready(function(){
+    $(".cust-filter-bt").click(function(){	
+		$(this).toggleClass('cust-filter-bt-active');
+        $(".side-menu").slideToggle("slow");
+    });
+    
+    if($(window).width() >= 768){
+		 $(document).on('click','.navbar-nav li.dropdown a.dropdown-toggle',function(){
+			  $(this).parent('li').toggleClass('open');
+		  });
+    }
+	
+	
+});
+
+	
+$(document).ready(function(){    
+    
+  /*  $(".navbar-leftblock .dropdown").hover(            
+        function() {
+         
+            $('.dropdown-menu', this).stop( true, true ).slideDown("fast");
+            $(this).toggleClass('open');        
+        },
+        function() {
+            $('.dropdown-menu', this).stop( true, true ).slideUp("fast");
+            $(this).toggleClass('open');       
+        }
+    ); */
+
+/* checkbox All fuction */
+$(document).on('click','.checkall', function(){
+   checkedAll();
+});
+$(document).on('click','.rowcheck', function(){
+    checkedAllStatus(this);
+ });
+ function checkedAll(){
+    if($('.checkall').is(':checked')){
+        $('.rowcheck').prop('checked',true);
+    }else{
+        $('.rowcheck').prop('checked',false);
+    }
+ }
+ function checkedAllStatus(e){
+     var tem =[];
+     $( ".rowcheck" ).each(function() {
+         if(jQuery.inArray($( this ).prop('checked'),tem)  == -1){
+            tem.push($( this ).prop('checked'));
+         }
+      });
+      if(tem.length > 1 || tem.length < 1){
+        $('.checkall').prop('checked',false);
+      }else{
+        $('.checkall').prop('checked',true);
+      }
+ }
+
+/* Menu Active based on URL */
+ setTimeout(function(){  
+   
+    
+activateMenu();
+   }, 3);
+
+   /* Menu Active based on URL  End*/
+ 
+});
+
+//$('.datepicker').datepicker({ autoclose: true,  todayHighlight: true});
+//jQuery('.timepicker').timepicker({defaultTIme: false});
+//$('.adduserFiltering').multiselect({enableFiltering: true});
+
+
+/* Uplode */
+$(function() {
+
+    // We can attach the `fileselect` event to all file inputs on the page
+    $(document).on('change', ':file', function() {
+      var input = $(this),
+          numFiles = input.get(0).files ? input.get(0).files.length : 1,
+          label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+      input.trigger('fileselect', [numFiles, label]);
+    });
+  
+    // We can watch for our custom `fileselect` event like this
+    $(document).ready( function() {
+        $(':file').on('fileselect', function(event, numFiles, label) {
+  
+            var input = $(this).parents('.input-group').find(':text'),
+                log = numFiles > 1 ? numFiles + ' files selected' : label;
+  
+            if( input.length ) {
+                input.val(log);
+            } else {
+                //if( log ) alert(log);
+            }
+  
+        });
+    });
+    var activeStatus='';
+    $(document).on('click','.adduser-card li', function(){
+        if($(this).hasClass('active')){
+            activeStatus='active';
+         }else{
+            activeStatus='';
+         }
+         $(this).toggleClass('active');
+     });
+	 
+	 
+    $(document).on('click','.adduser-card li .adduser-remove-bt', function(){
+        var this1=this;
+        setTimeout(function(){  
+            
+             if(activeStatus !== ''){
+                $(this1).closest('li').addClass('active'); 
+             }else{
+                $(this1).closest('li').removeClass('active'); 
+             }
+            
+            }, 3);
+        swal({
+            title: "Are you sure delete this user?",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonClass: "btn-danger",
+            confirmButtonText: "Yes, Remove it!",
+            closeOnConfirm: true
+        },
+        function(){
+            $(this1).closest('li').remove();
+          //  swal({
+            //    title:"Removed!", 
+              //  text:"Reason: The user has been removed.", 
+                //type:"success",
+               // confirmButtonClass:"btn-success"
+            //});
+        });
+       
+    });
+
+    //generic row delete function 
+    $(document).on('click','.fa-trash-o',function(){
+       var deleteButton = this;
+        swal({
+            title: "Are you sure you want to delete?",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonClass: "btn-danger",
+            confirmButtonText: "Yes, Remove it!",
+            closeOnConfirm: true
+        },
+        function(){
+            $(deleteButton).closest('tr').remove();
+        });
+    });
+    siteConfig();
+    //Site Configuration Action
+    function siteConfig(){
+        if($('.config-nav ul li.camio').hasClass('active')){
+            $('.camio-block').show();
+            $('.vmd4-block').hide();
+            $('.wizard-action-row .savenext').attr('on')
+        }
+        else if($('.config-nav ul li.vmd4').hasClass('active')){
+            $('.camio-block').hide();
+            $('.vmd4-block').show();
+        }
+    }
+$(document).on('click','.config-nav ul li',function(){
+    $('.config-nav ul li').each(function(){
+        $(this).removeClass('active');
+    });
+    $(this).addClass('active');
+    siteConfig();
+   
+});
+ 
+});
+//activate the menu
+function activateMenu(){
+        var path = window.location.href;
+        path = path.replace(/\/$/, "");	
+        var result= path.split('/');
+        var Param1 = result[result.length-1];
+        //var right_first_part=path.substring(0,path.lastIndexOf("/"));
+        sidebarMenu(Param1);
+    }
+    function sidebarMenu(fileName){
+      
+        $(".navbar-nav li a").each(function () {
+           
+            var href = $(this).attr('href');
+            var hrefFileName = href.substr(0,href.lastIndexOf("/"));
+            if(hrefFileName == ""){
+                hrefFileName = href;
+            }
+            
+            if (fileName === hrefFileName) {
+             
+               $(this).closest('li').addClass('active');
+               if($(this).closest('ul').parent( "li" ).length > 0){
+                  $(this).closest('li').closest('ul').parent('li').addClass('active');
+                      if($(this).closest('ul').parent( "li" ).closest('ul').parent('li').length > 0){
+                            $(this).closest('ul').parent( "li" ).closest('ul').parent('li').addClass('active');
+                            if($(this).closest('ul').parent( "li" ).closest('ul').parent('li').closest('ul').parent('li').length > 0){
+                            $(this).closest('ul').parent( "li" ).closest('ul').parent('li').closest('ul').parent('li').addClass('active');
+                      }
+                      }
+               }
+            }
+        });
+
+        }
+
+//collapse
+function toggleChevron(e) {
+    $(e.target)
+        .prev('.panel-heading')
+        .find("i.indicator")
+        .toggleClass('glyphicon-chevron-down glyphicon-chevron-up');
+}
+$('#accordion').on('hidden.bs.collapse', toggleChevron);
+$('#accordion').on('shown.bs.collapse', toggleChevron);
+
+

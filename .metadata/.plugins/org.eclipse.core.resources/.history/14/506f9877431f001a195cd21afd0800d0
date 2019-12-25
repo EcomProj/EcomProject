@@ -1,0 +1,63 @@
+
+$(function () {
+	
+	//alert("Page Loaded");
+	performAJAX("/EcomWebApplication/", "GET", "", getCustomerDetailsCallBack);
+
+});
+
+/*
+$('#customers').change(function () {
+
+	//alert($('#customers option:selected').val());
+	var customerid = $('#customers option:selected').val();
+	var customername = $('#customers option:selected').text();
+	sessionStorage.removeItem('customername');
+	$.session.set('customername', customername);
+	$("#submitcustomer").val(customerid);
+	var data = {
+		"customerid": customerid
+	}
+	performAJAX("/vgs-monitoring/getinstallationdetails.do", "GET", data, getinstallationsCallBack);
+});
+
+
+function getCustomerDetailsCallBack(data) {
+
+	var appenddata1 = "";
+	for (var i = 0; i < data.length; i++) {
+
+		appenddata1 += "<option value = '" + data[i].account_id + " '>" + data[i].customer_name + " </option>";
+	}
+
+	$("#customers").append(appenddata1);
+}
+
+
+
+function getinstallationsCallBack(data) {
+
+	var installationslist = "";
+	var jsondata = JSON.parse(data);
+	$("#intallation").empty();
+	var instalationlist = jsondata.installationList;
+
+
+	if (instalationlist.length === 0) {
+
+		$('#intallation').html("<b>No Installations<b");
+		$("b").css("color", "red");
+
+	} else {
+		$.each(instalationlist, function (index, value) {
+
+			instalationlist += '<tr><td style="color: black;"><input type="checkbox" class="rowcheck">' + value.installationName + ' </td></tr>';
+
+		})
+
+		$("#intallation").append(instalationlist);
+	}
+
+}
+
+*/

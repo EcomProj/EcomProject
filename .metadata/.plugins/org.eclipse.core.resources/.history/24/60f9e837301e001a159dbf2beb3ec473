@@ -1,0 +1,23 @@
+package com.SpringBootwebApplication.api.daoImpl;
+
+import java.util.List;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+
+import com.SpringBootwebApplication.api.dao.CustomerDao;
+import com.SpringBootwebApplication.api.model.Customer;
+import com.SpringBootwebApplication.api.util.HibernateUtil;
+
+public class CustomerDaoImpl implements CustomerDao {
+
+	@Override
+	public List<Customer> getcustomer() {
+		Session ses=HibernateUtil.getSession();
+		 Query qry = ses.createQuery("from Customer");
+
+		    return qry.list();
+		
+	}
+
+}

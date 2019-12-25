@@ -1,0 +1,10 @@
+package com.SpringBootwebApplication.api.model;
+
+public class Customer {
+	
+	
+	private int cid; 
+	private String cname;
+	private String caddr;
+
+}

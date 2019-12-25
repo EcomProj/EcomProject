@@ -1,0 +1,36 @@
+package com.SpringBootwebApplication.api.daoImpl;
+
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.springframework.stereotype.Repository;
+
+import com.SpringBootwebApplication.api.dao.CustomerDao;
+import com.SpringBootwebApplication.api.model.Customer;
+import com.SpringBootwebApplication.api.util.HibernateUtil;
+
+@Repository
+@Transactional
+public class CustomerDaoImpl implements CustomerDao {
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Customer> getcustomer() {
+		Session ses=HibernateUtil.getSession();
+		 Query qry=null;
+		try{
+			  qry= ses.createQuery("from Customer");
+		}catch(Exception ex){
+			System.out.println(ex.getMessage());
+		}
+		finally{
+			ses.close();
+		}
+		
+		    return qry.list();
+	}
+
+}

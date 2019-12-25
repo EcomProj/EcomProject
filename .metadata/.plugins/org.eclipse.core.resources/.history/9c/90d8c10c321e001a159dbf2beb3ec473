@@ -1,0 +1,22 @@
+package com.SpringBootwebApplication.api.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.SpringBootwebApplication.api.service.CustomerService;
+
+@Controller
+public class CustomermanagementController {
+	
+@Autowired
+private CustomerService service;
+
+	
+	@RequestMapping("/getcustomer")
+	public String firstPage() {
+		System.out.println("Get Customer");
+		return service.getcustomer().toString();
+	}
+}

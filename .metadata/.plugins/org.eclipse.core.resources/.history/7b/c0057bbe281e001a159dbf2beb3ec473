@@ -1,0 +1,8 @@
+package com.SpringBootwebApplication.api.model;
+
+public class Customer {
+	
+	
+	private int eid;
+
+}

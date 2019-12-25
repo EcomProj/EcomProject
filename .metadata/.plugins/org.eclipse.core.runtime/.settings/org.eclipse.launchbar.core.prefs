@@ -1,0 +1,8 @@
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch=x86
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=win32
+configDescList=org.eclipse.launchbar.core.descriptorType.default\:EcomWebApplication_src_main_resources_myjs_ivigil_util.js,org.eclipse.launchbar.core.descriptorType.default\:SpringBootWebApplication - SpringBootWebApplication,org.eclipse.launchbar.core.descriptorType.default\:devtools-client[EcomWebApplication],org.eclipse.launchbar.core.descriptorType.default\:EcomWebApplication - SpringBootWebApplication
+eclipse.preferences.version=1
+org.eclipse.launchbar.core.descriptorType.default\:SpringBootWebApplication\ -\ SpringBootWebApplication/activeLaunchMode=run
+org.eclipse.launchbar.core.descriptorType.default\:SpringBootWebApplication\ -\ SpringBootWebApplication/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
+org.eclipse.launchbar.core.descriptorType.default\:devtools-client[EcomWebApplication]/activeLaunchMode=run
+org.eclipse.launchbar.core.descriptorType.default\:devtools-client[EcomWebApplication]/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local

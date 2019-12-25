@@ -1,0 +1,160 @@
+$(document).ready(function () {
+	
+	
+	
+	
+    // Modal Navigation Options Show
+    $('.modalOptions').hide();
+    $('.siteInfoBlock').show();
+    $(document).on('click', '.modal-navigation .modalNav', function () {
+      $('.modalOptions').hide();
+      $('.modal-navigation .modalNav').removeClass('active');
+      $(this).addClass('active');
+      var modalNav = $(this).attr('data-modalnav');
+      $('.' + modalNav).show();
+    });
+
+    // for file inut 
+
+    $('#file_browser').click(function (e) {
+      e.preventDefault();
+      $('#file').click();
+    });
+    $('#file').change(function () {
+      $('#file_path').val($(this).val());
+    });
+
+    // Calender Events 
+    $(document).on('click', '.events', function () {
+      $('#eventModal').modal();
+      var eday = $(this).attr('data-day');
+      var emonth = $(this).attr('data-month');
+      var eyear = $(this).attr('data-year');
+      $('#eventModal .modal-title').html('Monitoring Hrs (CST)'+' : '+eday + '-' + emonth + '-' + eyear);
+    });
+
+    // Form actions active selection
+    $(document).on('click', '.modal-ul-list .list li', function(){
+      $('.modal-ul-list .list li').removeClass('active');
+        $(this).toggleClass('active');
+    });
+
+    // Images Scurber 
+
+    $(function () {
+      $('.box').serce();
+    });
+
+  
+//    var currentDate = new Date();
+//    currentDate.setMinutes(0,0,0);
+ /*   $(function () {
+    	var currentDate = new Date();
+    	currentDate.setMinutes(0,0,0);
+    	currentDate.setHours(currentDate.getHours()+currentDate.getTimezoneOffset()/60);
+    	
+    	
+      $('.datetimepicker').datetimepicker({
+//        format: "dd MM yyyy - hh:ii",
+        format: 'dd/mm/yyyy hh:ii'+':00',
+
+        	todayHighlight: true,
+        	weekStart: 1,
+        	minView: 0,
+          	autoclose: true,
+          	pickerPosition: "bottom-left",
+          	timezone: 'UTC',
+        	todayBtn: true,
+        
+        
+        todayHighlight: true,
+        weekStart: 1,
+        minView: 0,
+        autoclose: true,
+        pickerPosition: 'bottom-left',
+        timezone: 'UTC',
+        startDate: currentDate,
+     
+    });
+      
+     
+        
+  });*/
+    
+    $.prototype.datetimepicker.DPGlobal.nonpunctuation = /[^ -\/:-@\[-`{-~\t\n\rZ]+/g;
+    var BootstrapDatetimepicker = function () {
+      var currentDate = new Date();
+      currentDate.setMinutes(0,0,0);
+      currentDate.setHours(currentDate.getHours()+currentDate.getTimezoneOffset()/60);
+    var datetimepickerOptions = {
+        todayHighlight: true,
+        weekStart: 1,
+        minView: 0,
+        autoclose: true,
+        pickerPosition: 'bottom-left',
+        format: 'dd/mm/yyyy hh:ii',
+        //format: 'dd/mm/yyyy hh:ii'+':00',
+        timezone: 'UTC',
+        //startDate: currentDate,
+      };
+    var initializePickers = function () {
+        $('.datetimepicker').datetimepicker(datetimepickerOptions);
+      };
+    return {
+        // public functions
+        init: function() {
+          initializePickers();
+        }
+      };
+    }();
+    jQuery(document).ready(function() {
+      BootstrapDatetimepicker.init();
+    });
+
+   
+  // responsive-calendar 
+  $(".responsive-calendar").responsiveCalendar({
+    time: '2018-12',
+    events: {
+      "2018-09-10": { "customClass": "events" },
+      "2018-09-12": { "customClass": "events" },
+      "2018-09-15": { "customClass": "events" },
+      "2018-05-12": {}
+    }
+  });
+
+  // Add Site Plan Activity Modal Popup Checkbox Options Display
+  //$('.modalbox').css('display','none');
+  //using check box
+  $('input[type="checkbox"]').click(function(){
+    var inputValue = $(this).attr("value");
+    $("." + inputValue).toggle();
+  });
+   //using check Radiobox
+  $('input[type="radio"]').click(function(){
+    
+    var inputValue = $(this).attr("value");
+    var targetBox = $("." + inputValue);
+    $(".modalbox").not(targetBox).hide();
+    $(targetBox).show();
+});
+
+
+ 
+
+});
+
+
+  // Google Map upload Drag and drop format upload the files
+  $("#open_btn").click(function() {
+    $.FileDialog({multiple: true}).on('files.bs.filedialog', function(ev) {
+        var files = ev.files;
+        var text = "";
+        files.forEach(function(f) {
+            text += f.name + "<br/>";
+        });
+        $("#output").html(text);
+    }).on('cancel.bs.filedialog', function(ev) {
+        $("#output").html("Cancelled!");
+    });
+});

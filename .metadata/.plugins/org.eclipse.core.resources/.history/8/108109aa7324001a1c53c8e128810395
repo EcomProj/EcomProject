@@ -1,0 +1,149 @@
+$(document).ready(function () {
+ 
+	//True tokenfield
+  $('#tokenfield').tokenfield({
+    autocomplete: {
+      //source: ['Intruder observed','Suspicious activity','Vehicle seen'],
+      delay: 100
+    },
+    showAutocompleteOnFocus: true
+  }) .on('tokenfield:createdtoken', function (e) {
+	  
+//	  onclick="removeTag('+e.attrs.value+')"
+	  
+  $('.tokenfield-cont').append('<li>'+e.attrs.value+'<a href="javascript:void(0)" class="close token-close" tabindex="-1">x</a></li>');
+  $('#tokenfield').closest('.tokenfield').find('.token').remove();
+  
+  // code by jayadeba
+ //First level true Data
+  $("#ftappenddata").append($('#tokenfield-tokenfield').val()+",");
+ 
+  $('#tokenfield-tokenfield').val('');
+ // alert( $('#tokenfield-tokenfield').val(''));
+  });
+
+  
+  
+  
+//tokenfield End
+
+//False tokenfield
+$('#tokenfield2').tokenfield({
+  autocomplete: {
+    //source: ['Animal/Spider Web','Dust particles','light','Person/pedestrian passing through','Plants','Vehicle passing through'],
+    delay: 100
+  },
+  showAutocompleteOnFocus: true
+}) .on('tokenfield:createdtoken', function (e) {
+$('.tokenfield-cont2').append('<li>'+e.attrs.value+'<a href="javascript:void(0)" class="close token-close" tabindex="-1">x</a></li>');
+$('#tokenfield2').closest('.tokenfield').find('.token').remove();
+
+// code by jayadeba
+//First level false Data
+ $("#ffappenddata").append($('#tokenfield2-tokenfield').val()+",");
+ $('#tokenfield2-tokenfield').val('');
+});
+
+
+
+$('#tokenfield3').tokenfield({
+  autocomplete: {
+    //source: ['Intruder observed','Suspicious activity','Vehicle seen'],
+    delay: 100
+  },
+  showAutocompleteOnFocus: true
+}) .on('tokenfield:createdtoken', function (e) {
+$('.tokenfield-cont3').append("<li>"+e.attrs.value+"<a href='javascript:void(0)' class='close token-close' tabindex='-1'>x</a></li>");
+$('#tokenfield3').closest('.tokenfield').find('.token').remove();
+
+//code by jayadeba
+//second level true tag
+$("#stappenddata").append($('#tokenfield3-tokenfield').val()+",");
+$('#tokenfield3-tokenfield').val('');
+});
+
+
+
+
+$('#tokenfield4').tokenfield({
+  autocomplete: {
+    //source: ['Intruder observed','Suspicious activity','Vehicle seen'],
+    delay: 100
+  },
+  showAutocompleteOnFocus: true
+}) .on('tokenfield:createdtoken', function (e) {
+$('.tokenfield-cont4').append("<li>"+e.attrs.value+"<a href='javascript:void(0)' class='close token-close' tabindex='-1'>x</a></li>");
+$('#tokenfield4').closest('.tokenfield').find('.token').remove();
+
+//code by jayadeba
+//second level false tag
+$("#sfappenddata").append($('#tokenfield4-tokenfield').val()+",");
+$('#tokenfield4-tokenfield').val('');
+});
+
+
+
+
+$('#tokenfield5').tokenfield({
+  autocomplete: {
+    //source: ['Intruder observed','Suspicious activity','Vehicle seen'],
+    delay: 100
+  },
+  showAutocompleteOnFocus: true
+}) .on('tokenfield:createdtoken', function (e) {
+$('.tokenfield-cont5').append("<li>"+e.attrs.value+"<a href='javascript:void(0)'; class='close token-close' tabindex='-1'>x</a></li>");
+$('#tokenfield5').closest('.tokenfield').find('.token').remove();
+
+//code by jayadeba
+//third level true tag
+$("#ttappenddata").append($('#tokenfield5-tokenfield').val()+",");
+
+$('#tokenfield5-tokenfield').val('');
+});
+
+
+
+
+$('#tokenfield6').tokenfield({
+  autocomplete: {
+    //source: ['Intruder observed','Suspicious activity','Vehicle seen'],
+    delay: 100
+  },
+  showAutocompleteOnFocus: true
+}) .on('tokenfield:createdtoken', function (e) {
+$('.tokenfield-cont6').append("<li>"+e.attrs.value+"<a href='javascript:void(0)' class='close token-close' tabindex='-1'>x</a></li>");
+$('#tokenfield6').closest('.tokenfield').find('.token').remove();
+//code by jayadeba
+//third level false tag
+$("#tfappenddata").append($('#tokenfield6-tokenfield').val()+",");
+$('#tokenfield6-tokenfield').val('');
+});
+
+
+
+
+var tagarray = [];
+
+// Token Close 
+$(document).on('click','.token-close',function(){
+	var tagid = $(this).closest('li').attr("value");
+//	alert('Tag ID is::'+tagid);
+	
+	var closingtag = $(this).closest('li').text();
+//	alert('closing tag is : '+closingtag);
+	
+
+	tagarray.push(tagid);
+//	alert('array value: '+tagarray);
+//	alert("Array length:::"+tagarray.length);
+	$("#tagids").val(tagarray);
+	$(this).parent('li').remove();
+  });
+
+}); 
+
+
+
+
+
+

@@ -1,0 +1,190 @@
+/*
+   jPolygon - a ligthweigth javascript library to draw2 polygons over HTML5 canvas2 images.
+   Project URL: http://www.matteomattei.com/projects/jpolygon
+   Author: Matteo Mattei <matteo.mattei@gmail.com>
+   Version: 1.0
+   License: MIT License
+*/
+
+var perimeter2 = new Array();
+var complete2 = false;
+
+ var canvas2 = document.getElementById("jPolygon-masking");
+
+var ctx2;
+
+function line_intersects2(p0, p1, p2, p3) {
+    var s1_x, s1_y, s2_x, s2_y;
+    s1_x = p1['x'] - p0['x'];
+    s1_y = p1['y'] - p0['y'];
+    s2_x = p3['x'] - p2['x'];
+    s2_y = p3['y'] - p2['y'];
+
+    var s, t;
+    s = (-s1_y * (p0['x'] - p2['x']) + s1_x * (p0['y'] - p2['y'])) / (-s2_x * s1_y + s1_x * s2_y);
+    t = ( s2_x * (p0['y'] - p2['y']) - s2_y * (p0['x'] - p2['x'])) / (-s2_x * s1_y + s1_x * s2_y);
+
+    if (s >= 0 && s <= 1 && t >= 0 && t <= 1)
+    {
+        // Collision detected
+        return true;
+    }
+    return false; // No collision
+}
+
+function point2(x, y){
+    ctx2.fillStyle="white";
+    ctx2.strokeStyle = "white";
+    ctx2.fillRect(x-2,y-2,4,4);
+    ctx2.moveTo(x,y);
+}
+
+function undo2(){
+    ctx2 = undefined;
+    perimeter2.pop();
+    complete2 = false;
+    start2(true);
+}
+
+function clear_canvas2(){
+    ctx2 = undefined;
+    perimeter2 = new Array();
+    complete2 = false;
+    document.getElementById('maskcoordinates').value = '';
+    start2();
+}
+
+function draw2(end,rgbVal){
+    ctx2.lineWidth = 1;
+    ctx2.strokeStyle = "white";
+    ctx2.lineCap = "square";
+    ctx2.beginPath();
+
+    for(var i=0; i<perimeter2.length; i++){
+        if(i==0){
+            ctx2.moveTo(perimeter2[i]['x'],perimeter2[i]['y']);
+            end || point2(perimeter2[i]['x'],perimeter2[i]['y']);
+        } else {
+            ctx2.lineTo(perimeter2[i]['x'],perimeter2[i]['y']);
+            end || point2(perimeter2[i]['x'],perimeter2[i]['y']);
+        }
+    }
+    if(end){
+        ctx2.lineTo(perimeter2[0]['x'],perimeter2[0]['y']);
+        ctx2.closePath();
+        //ctx2.fillStyle = 'rgba(255, 0, 0, 0.5)';
+        ctx2.fillStyle = rgbVal;
+        
+        ctx2.fill();
+        ctx2.strokeStyle = 'blue';
+        complete2 = true;
+    }
+    ctx2.stroke();
+
+    // print maskcoordinates
+    if(perimeter2.length == 0){
+        document.getElementById('maskcoordinates').value = '';
+    } else {
+        document.getElementById('maskcoordinates').value = JSON.stringify(perimeter2);
+    }
+}
+
+function check_intersect2(x,y){
+    if(perimeter2.length < 4){
+        return false;
+    }
+    var p0 = new Array();
+    var p1 = new Array();
+    var p2 = new Array();
+    var p3 = new Array();
+
+    p2['x'] = perimeter2[perimeter2.length-1]['x'];
+    p2['y'] = perimeter2[perimeter2.length-1]['y'];
+    p3['x'] = x;
+    p3['y'] = y;
+
+    for(var i=0; i<perimeter2.length-1; i++){
+        p0['x'] = perimeter2[i]['x'];
+        p0['y'] = perimeter2[i]['y'];
+        p1['x'] = perimeter2[i+1]['x'];
+        p1['y'] = perimeter2[i+1]['y'];
+        if(p1['x'] == p2['x'] && p1['y'] == p2['y']){ continue; }
+        if(p0['x'] == p3['x'] && p0['y'] == p3['y']){ continue; }
+        if(line_intersects2(p0,p1,p2,p3)==true){
+            return true;
+        }
+    }
+    return false;
+}
+
+function point_it2(event) {
+    if(complete2){
+        swal('Polygon already created');
+        return false;
+    }
+    var rect, x, y;
+    var rgbVal=canvas2.getAttribute('data-rgb');
+    if(event.ctrlKey || event.which === 3 || event.button === 2){
+        if(perimeter2.length==2){
+            swal('You need at least three points for a polygon');
+            return false;
+        }
+        x = perimeter2[0]['x'];
+        y = perimeter2[0]['y'];
+        if(check_intersect2(x,y)){
+        	 $('#undo1').prop("disabled",true);
+        	 $('#save1').prop("disabled",true);
+        	 $('#clearclosebutton').prop("disabled",true);
+            swal('The line you are drawing intersect another line');
+            
+//            $('.canvas-action-btn .btn').css("pointer-events","none");
+           
+            
+            return false;
+        }
+        draw2(true,rgbVal);
+        $('#undo1').prop("disabled",false);
+   	 	$('#save1').prop("disabled",false);
+   	 	$('#clearclosebutton').prop("disabled",false);
+        swal({
+            title: "Polygon created",
+            type: "success",
+            
+            
+        });
+	event.preventDefault();
+        return false;
+    } else {
+        rect = canvas2.getBoundingClientRect();
+        x = event.clientX - rect.left;
+        y = event.clientY - rect.top;
+        if (perimeter2.length>0 && x == perimeter2[perimeter2.length-1]['x'] && y == perimeter2[perimeter2.length-1]['y']){
+            // same point2 - double click
+            return false;
+        }
+        if(check_intersect2(x,y)){
+        	 $('#undo1').prop("disabled",true);
+        	 $('#save1').prop("disabled",true);
+        	 $('#clearclosebutton').prop("disabled",true);
+            swal('The line you are drawing intersect another line');
+            return false;
+        }
+        perimeter2.push({'x':x,'y':y});
+            draw2(false,rgbVal);
+        return false;
+    }
+}
+
+function start2(with_draw2) {
+    var img = new Image();
+    var rgbVal=canvas2.getAttribute('data-rgb');
+    img.src = canvas2.getAttribute('data-imgsrc');
+   
+    img.onload = function(){
+        ctx2 = canvas2.getContext("2d");
+        ctx2.drawImage(img, 0, 0, canvas2.width, canvas2.height);
+        if(with_draw2 == true){
+            draw2(false,rgbVal);
+        }
+    }
+}

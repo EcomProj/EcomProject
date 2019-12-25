@@ -1,0 +1,90 @@
+.login-strip{position: absolute; right: 0px; top: 0px}
+.top-gap-heaight{height:80px;}
+.contact-support-block{text-align: center; color:#fff; position: absolute; bottom: 0px; width:100%; 
+padding-bottom:30px; left: auto; right: auto;}
+.contact-support-block h6{font-size:18px; font-weight: 100; padding-bottom:10px;}
+.contact-support-block h4{font-size:22px; font-weight: 700; padding-bottom:12px; margin:0px;}
+.contact-support-block p{font-size:14px; font-weight: 400; padding-top:20px;}
+
+.login-section {display: table;	width: 100%;height: 100%;}
+.login-section .left {
+	display: table-cell;
+	height: 100%;
+	background: #afadad;
+}
+.login-section .left .contentslider {
+
+}
+.login-section .left .contentslider h2 {
+	font-size: 42px;
+	color: #FFF;
+	font-weight: 300;
+	margin-bottom: 15px;
+}
+.login-section .left .contentslider p {
+	font-size: 16px;
+	color: #97f3d7;
+	font-weight: 300;
+	margin-bottom: 20px;
+}
+.login-section .left .contentslider .btn-more {
+	border-radius: 20px;
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	border: solid 1px #ffffff;
+	padding: 8px 20px;
+	color: #FFF;
+	margin-top: 10px;
+}
+.login-section .left .contentslider .btn-more:hover {
+	background: #f22524;
+	border-color: #f22524;
+}
+.login-section .right {
+	display: table-cell;
+	vertical-align: top;
+	background-color: #FFF;
+	width: 40%;
+	height: 100%;
+	color: #333;
+}
+.promo-slider {	width: 100%;background: url(../images/cover2.jpg) center center no-repeat;
+	position: relative;	background-size: cover;	height: 100%;}
+.formcontainer {padding: 45px 55px;}
+.formcontainer .signSection {margin-top:30px;}
+.formcontainer .signSection p {font-family: 'Open Sans', sans-serif;color: #7f868a;	margin-bottom: 35px;}
+.formcontainer .signSection p a {color: #f22524;}
+.formcontainer .signSection label {color: #000;font-weight: 400; font-size:14px;}
+.formcontainer .signSection .forgot-password-text{color: #3758ad; font-size:13px;}
+.formcontainer .signSection .forgot-password-text:hover{color: #000000; font-size:13px;}
+.formcontainer .signSection .form-group {position: relative;margin-bottom: 25px;}
+.formcontainer .signSection .form-group span.icon {	position: absolute;	top: 33px;	right: 10px;}
+.formcontainer .signSection .form-control {border: solid 2px #a3b2bf;height: 45px;
+line-height: 45px;	-webkit-border-radius: 2px;-moz-border-radius: 2px;	border-radius: 2px;	box-shadow: none;
+color: #000;font-size: 14px;padding-right: 40px;}
+.formcontainer .signSection .form-control:focus {box-shadow: none;	border-color: #F47738;}
+.formcontainer .signSection a:hover {color: #000000;}
+.formcontainer .signSection .alert {border-radius: 2px;}
+.formcontainer .signSection .alert-danger {color: #d42b4a;background-color: #ffb2c0;
+border-color: #ffb2c0;}
+.formcontainer .btn {border-radius: 20px;-moz-border-radius: 20px;-webkit-border-radius: 20px;background: #eceff1;
+color: #7f868a;	padding: 8px 45px;	margin-right: 5px;	border-color: #eceff1;	position: relative;
+font-size:16px;}
+.formcontainer .btn.login-btn {background: #F47738;	color: #fff; border-color: #F47738;}
+.formcontainer .signSection .btn.login-btn:hover {background-color:#F47738; color:#fff;}
+.form-group.error .form-control{box-shadow: none;   border-color: #f78b8b;}
+.form-group.error span.error-message{ color: #f78b8b; font-size: 13px;}
+
+
+@media (min-width:768px) and (max-width:991px) {
+.formcontainer{padding: 45px 20px;}	
+.login-section .right{width: 50%;}	
+}
+
+@media (max-width:767px) {
+.formcontainer{padding: 40px 30px;}
+.top-gap-heaight{height:0px;}
+.login-section .right{width: 100%;}	
+.login-section .left{display:none;}
+	
+}

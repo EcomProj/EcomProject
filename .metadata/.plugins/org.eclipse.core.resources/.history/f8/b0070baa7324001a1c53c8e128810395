@@ -1,0 +1,169 @@
+$(function () {  
+	/* this is for Tooltip */
+	$('[data-toggle="tooltip"]').tooltip({
+		trigger : 'hover'
+	}); 
+	
+/* this is for questionnaire */
+	$('.questionnaire').hide();
+	$('.false-questionnaire').hide();
+	$('.esc-questionnaire').hide();
+	$('.eventinfo-block').hide();
+	
+
+	$('.escalated-action a').click(function(){
+		$(this).closest('.c-cont').find('.escalation-process').hide();
+		$(this).closest('.c-cont').find('.questionnaire').show();	
+		$(this).closest('.c-cont').find('.esc-questionnaire').show();	
+		var lbVal=$(this).html();
+		$(this).closest('.c-cont').find('.esc-questionnaire h3').html(lbVal);
+		$(this).closest('.c-cont').find('.esc-questionnaire h4').html(lbVal+' '+'?');
+		//$(this).closest('.cardbox').find('.eventinfo-block').hide();
+
+	});
+
+	$('.false-action a').click(function(){
+		$(this).closest('.c-cont').find('.escalation-process').hide();
+		$(this).closest('.c-cont').find('.questionnaire').show();	
+		$(this).closest('.c-cont').find('.esc-questionnaire').hide();	
+		$(this).closest('.c-cont').find('.false-questionnaire').show();	
+		var lbVal=$(this).html();
+		$(this).closest('.c-cont').find('.false-questionnaire h3').html(lbVal);
+		$(this).closest('.c-cont').find('.false-questionnaire h4').html(lbVal+' '+'?');
+		//$(this).closest('.cardbox').find('.eventinfo-block').hide();
+
+	
+	});
+
+	$('.ans-yes').click(function(){
+		$(this).closest('.c-cont').find('.esc-questionnaire').hide();	
+		$(this).closest('.c-cont').find('.false-questionnaire').hide();	
+		$(this).closest('.c-cont').find('.questionnaire').hide();
+		$(this).closest('.c-cont').find('.escalation-process').show();
+	});
+
+	$('.ans-no').click(function(){
+		$(this).closest('.c-cont').find('.esc-questionnaire').hide();	
+		$(this).closest('.c-cont').find('.false-questionnaire').hide();	
+		$(this).closest('.c-cont').find('.questionnaire').hide();
+		$(this).closest('.c-cont').find('.escalation-process').show();
+		
+	});
+
+	$('.eventinfo').click(function(){
+		var boxwidth=$('.c-cont').width();
+		var contnetblockTop=$('.c-cont').offset().top;
+		//alert(contnetblockTop);
+		
+		$(this).toggleClass('active');
+		
+		if($(this).closest('.cardbox').find('.eventinfo').hasClass('active'))
+		{	
+			$(this).closest('.cardbox').find('.c-cont').show();
+			$(this).closest('.cardbox').find('.eventinfo-block').show().css({'z-index':'99999','position':'absolute','width':boxwidth+24,'top':contnetblockTop-90 });
+		
+		}	
+		else{
+			$(this).closest('.cardbox').find('.c-cont').show();
+			$(this).closest('.cardbox').find('.eventinfo-block').hide();
+			
+		}	
+		
+	});
+	$(document).on('click','.close-btn', function(){
+
+		$(this).closest('.cardbox').find('.eventinfo').trigger('click');
+		
+
+	});
+
+
+
+    
+	  $('#carousel-generic').on('slid.bs.carousel', '', function() {
+	  var $this = $(this);
+	
+	  $this.children('.carousel-control').show();
+	
+	  if($('.carousel-inner .item:first').hasClass('active')) {
+		$this.children('.left.carousel-control').hide();
+	  } else if($('.carousel-inner .item:last').hasClass('active')) {
+		$this.children('.right.carousel-control').hide();
+	  }
+	
+	});   
+		
+
+
+	// Feedback actions 
+$('.feeback-row ul li').click(function(){
+	$(this).toggleClass('active');
+});
+	
+$('.slimScrollDiv').slimScroll({
+
+	railVisible: true,
+	wheelStep: 20
+});
+
+
+$(document).on('click','.app-ex-action', function(){
+	$('.cardbox-padding').hide();
+	$(this).closest('.cardbox-padding').show();
+	$(this).closest('.cardbox-padding').toggleClass('col-md-12 col-md-4');
+	$(this).find('.icon').toggleClass('icon-zoom-in icon-zoom-out');
+	if(	$(this).find('.icon').hasClass('icon-zoom-in')){
+		$(this).attr('data-original-title','Zoom Out');
+	}
+	else{
+		$(this).attr('data-original-title','Zoom In');
+	}
+	if($(this).closest('.cardbox-padding').hasClass('col-md-4')){
+	
+		$('.cardbox-padding').show();
+	}
+	
+});
+
+
+
+
+
+
+
+$(document).on('click','.important', function(){
+	$(this).toggleClass('active');
+	$(this).find('.fa').toggleClass('fa-star-o fa-star');
+});
+
+
+});
+
+function newwindowModal(){
+	'use strict';
+	let newWindow = open('feedback.html', 'example', 'width=650,height=320')
+    newWindow.focus();    
+}
+
+function pendingevents(){
+	'use strict';
+	let newWindow = open('pendingevents.html', 'example', 'width=1044,height=580')
+    newWindow.focus();    
+}
+
+
+function pendingeventsl1(){
+	'use strict';
+	let newWindow = open('pendingevents-l1.html', 'example', 'width=1044,height=580')
+    newWindow.focus();    
+}
+
+$( function() {
+//	$( ".draggable" ).draggable();
+	
+		
+  });
+
+
+
+	

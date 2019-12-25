@@ -1,0 +1,23 @@
+package com.SpringBootwebApplication.api.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.SpringBootwebApplication.api.service.CustomerService;
+import com.google.gson.JsonObject;
+
+@Controller
+public class CustomermanagementController {
+	
+@Autowired
+private CustomerService service;
+
+	
+	@RequestMapping("/getcustomer")
+	public String firstPage() {
+		System.out.println("Get Customer");
+		JsonObject json=new JsonObject();
+		return service.getcustomer().toString();
+	}
+}

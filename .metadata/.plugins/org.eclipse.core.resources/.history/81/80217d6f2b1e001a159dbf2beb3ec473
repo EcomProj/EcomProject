@@ -1,0 +1,15 @@
+package com.SpringBootwebApplication.api.serviceImpl;
+
+import java.util.List;
+
+import com.SpringBootwebApplication.api.model.Customer;
+
+public class CustomerService implements com.SpringBootwebApplication.api.service.CustomerService {
+
+	@Override
+	public List<Customer> getcustomer() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
